@@ -1,0 +1,16 @@
+-- Members
+    - ID - primary key
+    - First Name
+    - Last Name
+    - DOB
+    - SSN (optional)
+    - Client ID (foreign key to clients)
+
+        - Client
+
+-- Clients
+    - ID - primary key
+    - Name (e.g. "ABCD")
+    - Dashboard URL (e.g. "ABCD.dashboard.com)
+    
+This is a one to many relationship (one client has many members)

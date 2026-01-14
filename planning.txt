@@ -1,0 +1,21 @@
+-- Healthcare Patient Search Tool
+
+Functionality of Application
+
+-- Master internal lookup tool to retreive members information
+-- The tool searches across all clients, returns the matching patient(s) with their client identifier, and maybe even generates the correct dashboard URL they can click or copy.
+
+How our UI should be structured/organized
+
+-- Dashboard home page with a form to search for members based off name/DOB/ID/ssn/plan name
+
+
+Technologies used
+
+-- Flask as Backend (Python)
+    -- DB will be SQLite
+    -- SQLAlchemy as ORM
+-- HTML/CSS as Frontend 
+
+
+Name: MC Search Tool
