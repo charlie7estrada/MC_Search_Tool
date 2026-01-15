@@ -1,1 +1,53 @@
 # main flask app
+from flask import Flask, render_template, request, jsonify
+from config import Config
+from database import init_db
+from models import db, Member, Client
+
+app = Flask(__name__)
+app.config.from_object(Config)
+
+init_db(app)
+
+@app.route('/')
+def index():
+    """Home page with search form"""
+    return render_template('index.html')
+
+
+@app.route('/search', methods=['POST'])
+def search():
+    """Search endpoint - handles member lookups"""
+    # Get search parameters from form
+    first_name = request.form.get('first_name', '').strip()
+    last_name = request.form.get('last_name', '').strip()
+    dob = request.form.get('dob', '').strip()
+    
+    # Build query
+    query = Member.query
+    
+    # Filter by first name (case-insensitive, partial match)
+    if first_name:
+        query = query.filter(Member.first_name.ilike(f'%{first_name}%'))
+    
+    # Filter by last name (case-insensitive, partial match)
+    if last_name:
+        query = query.filter(Member.last_name.ilike(f'%{last_name}%'))
+    
+    # Filter by DOB (exact match)
+    if dob:
+        from datetime import datetime
+        try:
+            dob_date = datetime.strptime(dob, '%Y-%m-%d').date()
+            query = query.filter(Member.dob == dob_date)
+        except ValueError:
+            pass  # Invalid date format, ignore
+    
+    # Execute query
+    results = query.all()
+    
+    return render_template('results.html', results=results)
+
+
+if __name__ == '__main__':
+    app.run(debug=True)
