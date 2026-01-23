@@ -44,6 +44,11 @@ button {
     cursor: pointer;
 }
 
+button[type="button"] {
+    background-color: #857c7c;
+    margin-left: 0.5rem;
+}
+
 table {
     width: 100%;
     border-collapse: collapse;

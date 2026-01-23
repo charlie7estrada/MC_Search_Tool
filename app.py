@@ -19,13 +19,13 @@ def index():
     return render_template('index.html')
 
 
-@app.route('/search', methods=['POST'])
+@app.route('/search', methods=['GET'])
 def search():
     """Search endpoint - handles member lookups"""
     # Get search parameters from form
-    first_name = request.form.get('first_name', '').strip()
-    last_name = request.form.get('last_name', '').strip()
-    dob = request.form.get('dob', '').strip()
+    first_name = request.args.get('first_name', '').strip()
+    last_name = request.args.get('last_name', '').strip()
+    dob = request.args.get('dob', '').strip()
     
     # Build query
     query = Member.query

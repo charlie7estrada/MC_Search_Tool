@@ -14,7 +14,7 @@
     <main>
         <h2>Search for a Member</h2>
         
-        <form action="/search" method="POST">
+        <form action="/search" method="GET">
             <div class="form-group">
                 <label for="first_name">First Name:</label>
                 <input type="text" id="first_name" name="first_name" placeholder="John" value="{{ first_name or '' }}">
@@ -31,6 +31,7 @@
             </div>
             
             <button type="submit">Search</button>
+            <button type="button" onclick="window.location.href='/'">Clear</button>
         </form>
         
         {% if results is defined %}
@@ -53,7 +54,7 @@
                         {% for member in results %}
                         <tr>
                             <td>{{ member.first_name }} {{ member.last_name }}</td>
-                            <td>{{ member.dob }}</td>
+                            <td>{{ member.dob.strftime('%m/%d/%Y') }}</td>
                             <td>{{ member.client.name }}</td>
                             <td>
                                 <a href="https://{{ member.client.dashboard_url }}" target="_blank">
