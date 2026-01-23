@@ -1,31 +1,78 @@
-<!-- search form -->
- {% extends 'base.html' %}
-
-{% block title %}Search Members - MC Search Tool{% endblock %}
-
-{% block content %}
-<div class="search-container">
-    <h2>Search for a Member</h2>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MC Search Tool</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <header>
+        <h1>Member Search Tool</h1>
+    </header>
     
-    <form action="/search" method="POST">
-        <div class="form-group">
-            <label for="first_name">First Name:</label>
-            <input type="text" id="first_name" name="first_name" placeholder="John">
-        </div>
+    <main>
+        <h2>Search for a Member</h2>
         
-        <div class="form-group">
-            <label for="last_name">Last Name:</label>
-            <input type="text" id="last_name" name="last_name" placeholder="Doe">
-        </div>
+        <form action="/search" method="POST">
+            <div class="form-group">
+                <label for="first_name">First Name:</label>
+                <input type="text" id="first_name" name="first_name" placeholder="John">
+            </div>
+            
+            <div class="form-group">
+                <label for="last_name">Last Name:</label>
+                <input type="text" id="last_name" name="last_name" placeholder="Doe">
+            </div>
+            
+            <div class="form-group">
+                <label for="dob">Date of Birth:</label>
+                <input type="date" id="dob" name="dob">
+            </div>
+            
+            <button type="submit">Search</button>
+        </form>
         
-        <div class="form-group">
-            <label for="dob">Date of Birth:</label>
-            <input type="date" id="dob" name="dob">
+        {% if results is defined %}
+        <div class="results-container">
+            <h2>Search Results</h2>
+            
+            {% if results %}
+                <p>Found {{ results|length }} member(s)</p>
+                
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Name</th>
+                            <th>Date of Birth</th>
+                            <th>Client</th>
+                            <th>Dashboard</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for member in results %}
+                        <tr>
+                            <td>{{ member.first_name }} {{ member.last_name }}</td>
+                            <td>{{ member.dob }}</td>
+                            <td>{{ member.client.name }}</td>
+                            <td>
+                                <a href="https://{{ member.client.dashboard_url }}" target="_blank">
+                                    View Dashboard
+                                </a>
+                            </td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            {% else %}
+                <p>No members found.</p>
+            {% endif %}
         </div>
-        
-        <button type="submit">Search</button>
-    </form>
+        {% endif %}
+    </main>
     
-    <p class="note">Note: All fields are optional. Use any combination to search.</p>
-</div>
-{% endblock %}
+    <footer>
+        <p>Internal Use Only - Customer Service Team</p>
+    </footer>
+</body>
+</html>

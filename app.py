@@ -50,7 +50,7 @@ def search():
     # Execute query
     results = query.all()
     
-    return render_template('results.html', results=results)
+    return render_template('index.html', results=results)
 
 
 if __name__ == '__main__':
