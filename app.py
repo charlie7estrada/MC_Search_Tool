@@ -1,6 +1,5 @@
 # main flask app
 from flask import Flask, render_template, request, jsonify
-from config import Config
 from database import init_db
 from models import db, Member, Client
 import os

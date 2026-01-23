@@ -7,6 +7,7 @@ class Member(db.Model):
     __tablename__ = 'members'
     
     id = db.Column(db.Integer, primary_key=True)
+    member_id = db.Column(db.String(50), nullable=False)
     first_name = db.Column(db.String(100), nullable=False)
     last_name = db.Column(db.String(100), nullable=False)
     dob = db.Column(db.Date, nullable=False)

@@ -1,5 +1,6 @@
 -- Members
     - ID - primary key
+    - Member ID - health plan insurance #
     - First Name
     - Last Name
     - DOB
