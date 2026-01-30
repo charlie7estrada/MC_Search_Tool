@@ -8,7 +8,8 @@ In healthcare claims management, customer service teams often manage members acr
 
 ## Screenshot
 
-![Search Results](https://github.com/user-attachments/assets/36a13f1a-3275-4d64-9bee-65021b06e2fb)
+<img width="1047" height="847" alt="mc_search_image" src="https://github.com/user-attachments/assets/4693d4be-4fd3-48df-b909-509a23d00c54" />
+
 
 
 ## Features
