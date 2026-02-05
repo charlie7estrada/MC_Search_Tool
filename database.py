@@ -24,6 +24,9 @@ def seed_data():
         Member(member_id='ABCD100003', first_name='Michael', last_name='Johnson', dob=date(1978, 11, 8), client_id=client1.id),
         Member(member_id='XXYY200001', first_name='Sarah', last_name='Williams', dob=date(1995, 1, 30), client_id=client2.id),
         Member(member_id='XXYY200002', first_name='Robert', last_name='Brown', dob=date(1982, 6, 12), client_id=client2.id),
+        Member(member_id='ABCD100004', first_name='Robert', last_name='Brown', dob=date(1982, 6, 12), client_id=client1.id),
+        Member(member_id='ABCD100005', first_name='John', last_name='Smith', dob=date(1955, 8, 1), client_id=client1.id),
+        Member(member_id='XXYY200003', first_name='Mark', last_name='Jones', dob=date(1978, 11, 8), client_id=client2.id),
     ]
     db.session.add_all(members)
     db.session.commit()
