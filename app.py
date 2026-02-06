@@ -26,6 +26,7 @@ def search():
     first_name = request.args.get('first_name', '').strip()
     last_name = request.args.get('last_name', '').strip()
     dob = request.args.get('dob', '').strip()
+    member_id = request.args.get('member_id', '').strip()
     page = request.args.get('page', 1, type=int)
     per_page = 5  # Results per page
     
@@ -39,6 +40,10 @@ def search():
     # Filter by last name (case-insensitive, partial match)
     if last_name:
         query = query.filter(Member.last_name.ilike(f'%{last_name}%'))
+
+    #  Filter by member id (case-insensitive, partial match)
+    if member_id:
+        query = query.filter(Member.member_id.ilike(f'%{member_id}%'))
     
     # Filter by DOB (exact match)
     if dob:
@@ -57,7 +62,8 @@ def search():
         pagination=pagination,
         first_name=first_name,
         last_name=last_name,
-        dob=dob
+        dob=dob,
+        member_id=member_id 
     )
 
 
