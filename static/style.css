@@ -69,3 +69,17 @@ th {
     background-color: whitesmoke;
     color: #7ea700;
 }
+
+.pagination {
+    margin-top: 1rem;
+    display: flex;
+    gap: 1rem;
+    align-items: center;
+}
+
+.pagination a {
+    color: #7ea700;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border: 1px solid #7ea700;
+}

@@ -26,6 +26,8 @@ def search():
     first_name = request.args.get('first_name', '').strip()
     last_name = request.args.get('last_name', '').strip()
     dob = request.args.get('dob', '').strip()
+    page = request.args.get('page', 1, type=int)
+    per_page = 5  # Results per page
     
     # Build query
     query = Member.query
@@ -47,11 +49,12 @@ def search():
         except ValueError:
             pass  # Invalid date format, ignore
     
-    # Execute query
-    results = query.all()
+    # Paginate results
+    pagination = query.paginate(page=page, per_page=per_page, error_out=False)
     
     return render_template('index.html', 
-        results=results,
+        results=pagination.items,
+        pagination=pagination,
         first_name=first_name,
         last_name=last_name,
         dob=dob
