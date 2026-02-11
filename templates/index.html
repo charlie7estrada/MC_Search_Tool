@@ -40,7 +40,7 @@
         </form>
         
         {% if results is defined %}
-        <div class="results-container">
+        <div class="results-container" id="results">
             <h2>Search Results</h2>
             
             {% if results %}
@@ -76,14 +76,14 @@
                 {% if pagination.pages > 1 %}
                 <div class="pagination">
                     {% if pagination.has_prev %}
-                        <a href="/search?first_name={{ first_name }}&last_name={{ last_name }}&dob={{ dob }}&member_id={{ member_id }}&page={{ pagination.prev_num }}">Previous</a>
+                        <a href="/search?first_name={{ first_name }}&last_name={{ last_name }}&dob={{ dob }}&member_id={{ member_id }}&page={{ pagination.prev_num }}#results">Previous</a>
 
                     {% endif %}
                 
                     <span>Page {{ pagination.page }} of {{ pagination.pages }}</span>
                 
                     {% if pagination.has_next %}
-                        <a href="/search?first_name={{ first_name }}&last_name={{ last_name }}&dob={{ dob }}&member_id={{ member_id }}&page={{ pagination.next_num }}">Next</a>
+                        <a href="/search?first_name={{ first_name }}&last_name={{ last_name }}&dob={{ dob }}&member_id={{ member_id }}&page={{ pagination.next_num }}#results">Next</a>
 
                     {% endif %}
                 </div>
