@@ -2,6 +2,8 @@
 
 An internal search tool for looking up healthcare members across multiple clients.
 
+**🔗 [Live Demo](https://mc-search-tool.onrender.com/)**
+
 ## Overview
 
 In healthcare claims management, customer service teams often manage members across multiple client organizations. Each client has their own dashboard, making it cumbersome to locate which client a member belongs to. This tool provides a centralized search interface to quickly find members and access their client's dashboard.
@@ -9,8 +11,6 @@ In healthcare claims management, customer service teams often manage members acr
 ## Screenshot
 
 <img width="1047" height="847" alt="mc_search_image" src="https://github.com/user-attachments/assets/4693d4be-4fd3-48df-b909-509a23d00c54" />
-
-
 
 ## Features
 
